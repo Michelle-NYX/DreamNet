@@ -1,0 +1,8 @@
+Welcome to the Mapillary Vistas Dataset (Research edition, v1.0)!
+The public set comprises 20,000 images, out of which 18,000 shall be used for training and the remaining 2,000 for validation. The official test set contains 5,000 RGB images, which will be released separately. We provide pixel-wise labels based on polygon annotations for 66 object classes, where 37 are annotated in an instance-specific manner (i.e. individual instances are labeled separately). The folder structures contain raw RGB images ({training,validation}/images), class-specific labels for semantic segmentation (8-bit) ({training,validation}/labels) and instance-specific annotations (16-bit) ({training,validation}/instances). Please run 'python demo.py' from the extracted folder to get an idea about how to access label information and for mappings between label IDs and category names.
+
+If you requested access to this dataset for your work as an employee of a company, you and the company will be bound by the license terms. Downloading the dataset implies your acceptance and the company’s acceptance of the terms. By downloading the dataset, you and the company certify that you have understood and accepted the definition of Research Purpose and the restrictions against commercial use as defined in the Mapillary Vistas Dataset Research Use License. A copy of the license terms is part of the downloaded file.
+
+/Mapillary Research, May 2017
+https://research.mapillary.com/
+
