@@ -1,4 +1,10 @@
-# Mask R-CNN for Object Detection and Segmentation
+# Mask R-CNN Application in Driving Scenes 
+One of the major challenges in autonomous driving is the ability to understand the environment including surrounding vehicles, traffic signs, and pedestrians at a finer-grained level. In this project, we investigate and evaluate the performance of the state-of-the-art model for instance segmentation, Mask R-CNN, on the newly-released Mapillary dataset, whose images focus specifically on driving scenes. We transfer the learning results from the pre-trained weights, fine tune the final layers for Mapillary Datasets. The result shows a significant improvement in precision measurements from the baseline, and achieves at a surpassing performance than benchmarks.
+
+* [Result](https://github.com/Michelle-NYX/DreamNet/Picture1.jpg): 
+
+
+# Mask R-CNN for Object Detection and Segmentation (Matterport Implementation) 
 
 This is an implementation of [Mask R-CNN](https://arxiv.org/abs/1703.06870) on Python 3, Keras, and TensorFlow. The model generates bounding boxes and segmentation masks for each instance of an object in the image. It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone.
 
