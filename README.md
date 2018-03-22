@@ -20,44 +20,47 @@ to prepare the training data.
 * [inspect_weights.ipynb](/inspect_weights.ipynb)
 This notebooks inspects the weights of a trained model and looks for anomalies and odd patterns.
 
+* [dataset_build.ipynb](/dataset_build.ipynb)
+Use this notebook to build dataset (train/dev/test) of desired size in replicable fashion.
+
 * [train_mapillary_tutorial.ipynb](/train_mapillary_tutorial.ipynb)
-This notebook elaborates in details the workflow in our training on Mapillary dataset
+This notebook elaborates in details the workflow in our training on Mapillary dataset.
 
 * [train_mapillary_AWS_debug.ipynb](/train_mapillary_AWS_debug.ipynb)
 Debug AWS EC2 instance in this file, which uses small-sized train set and validation set.
 
 * [train_mapillary_baseline_11_classes.ipynb](/train_mapillary_baseline_11_classes.ipynb)
-11-class baseline; learnign rate = e-4; mask threshold = 4096
+11-class baseline; learnign rate = e-4; mask threshold = 4096.
 
 * [train_mapillary_baseline_37_classes.ipynb](/train_mapillary_baseline_37_classes.ipynb)
-37-class baseline; learnign rate = e-4; mask threshold = 4096
+37-class baseline; learnign rate = e-4; mask threshold = 4096.
 
 * [train_mapillary_AWS_run_1_LR_e-4.ipynb](/train_mapillary_AWS_run_1_LR_e-4.ipynb)
-Run 1 (4,096 train / 1,024 validation); learnign rate = e-4; mask threshold = 4096
+Run 1 (4,096 train / 1,024 validation); learnign rate = e-4; mask threshold = 4096.
 
 * [train_mapillary_AWS_run_1_LR_e-5.ipynb](/train_mapillary_AWS_run_1_LR_e-5.ipynb)
-Run 1 (4,096 train / 1,024 validation); learnign rate = e-5; mask threshold = 4096
+Run 1 (4,096 train / 1,024 validation); learnign rate = e-5; mask threshold = 4096.
 
 * [train_mapillary_AWS_run_2_LR_e-2.ipynb](/train_mapillary_AWS_run_2_LR_e-2.ipynb)
-Run 2 (4,096 train / 1,024 validation); learnign rate = e-2; mask threshold = 1024
+Run 2 (4,096 train / 1,024 validation); learnign rate = e-2; mask threshold = 1024.
 
 * [train_mapillary_AWS_run_2_LR_e-3.ipynb](/train_mapillary_AWS_run_2_LR_e-3.ipynb)
-Run 2 (4,096 train / 1,024 validation); learnign rate = e-3; mask threshold = 1024
+Run 2 (4,096 train / 1,024 validation); learnign rate = e-3; mask threshold = 1024.
 
 * [train_mapillary_AWS_run_2_LR_e-4.ipynb](/train_mapillary_AWS_run_2_LR_e-4.ipynb)
-Run 2 (4,096 train / 1,024 validation); learnign rate = e-4; mask threshold = 1024
+Run 2 (4,096 train / 1,024 validation); learnign rate = e-4; mask threshold = 1024.
 
 * [train_mapillary_AWS_run_2_LR_e-5.ipynb](/train_mapillary_AWS_run_2_LR_e-5.ipynb)
-Run 2 (4,096 train / 1,024 validation); learnign rate = e-5; mask threshold = 1024
+Run 2 (4,096 train / 1,024 validation); learnign rate = e-5; mask threshold = 1024.
 
 * [train_mapillary_AWS_run_3_LR_e-3_11_classes.ipynb](/train_mapillary_AWS_run_3_LR_e-3_11_classes.ipynb)
-Run 3 (16,384 train / 1,024 validation / 1,024 test); 11 classes; learning rate = e-3, mask threshold = 1024
+Run 3 (16,384 train / 1,024 validation / 1,024 test); 11 classes; learning rate = e-3, mask threshold = 1024.
 
 * [test_mapillary_11_classes.ipynb](/test_mapillary_11_classes.ipynb)
-Evaluate performance of 11 classes on test set
+Evaluate performance of 11 classes on test set.
 
 * [test_mapillary_37_classes.ipynb](/test_mapillary_37_classes.ipynb)
-Evaluate performance of 37 classes on test set
+Evaluate performance of 37 classes on test set.
 
 # Step by Step Detection
 To help with debugging and understanding the model, there are 3 notebooks 
