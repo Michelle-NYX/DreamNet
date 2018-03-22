@@ -62,6 +62,15 @@ Evaluate performance of 11 classes on test set.
 * [test_mapillary_37_classes.ipynb](/test_mapillary_37_classes.ipynb)
 Evaluate performance of 37 classes on test set.
 
+# Trained weights
+* 11-class, head layers: https://drive.google.com/open?id=1CDDzUDtpqaguxaylW_y0OSCUHg_PzGcI
+
+* 11-class, ResNet stage 5+ layers: https://drive.google.com/open?id=1CDDzUDtpqaguxaylW_y0OSCUHg_PzGcI
+
+* 37-class, head layers: https://drive.google.com/open?id=1IZxoaccqEnudONekVt4BvwBQqtx_uoja
+
+* 37-class, ResNet stage 5+ layers: https://drive.google.com/open?id=1J0ZB-FX7At5TZexCrizmc3OdMbLgWInX
+
 # Step by Step Detection
 To help with debugging and understanding the model, there are 3 notebooks 
 ([inspect_data.ipynb](inspect_data.ipynb), [inspect_model.ipynb](inspect_model.ipynb),
