@@ -29,7 +29,7 @@ Debug AWS EC2 instance in this file, which uses small-sized train set and valida
 * [train_mapillary_baseline_11_classes.ipynb](/train_mapillary_baseline_11_classes.ipynb)
 11-class baseline; learnign rate = e-4; mask threshold = 4096
 
-* [train_mapillary_baseline_37c.ipynb](/train_mapillary_baseline_37c.ipynb)
+* [train_mapillary_baseline_37_classes.ipynb](/train_mapillary_baseline_37_classes.ipynb)
 37-class baseline; learnign rate = e-4; mask threshold = 4096
 
 * [train_mapillary_AWS_run_1_LR_e-4.ipynb](/train_mapillary_AWS_run_1_LR_e-4.ipynb)
