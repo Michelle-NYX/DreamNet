@@ -53,8 +53,11 @@ Run 2 (4,096 train / 1,024 validation); learnign rate = e-5; mask threshold = 10
 * [train_mapillary_AWS_run_3_LR_e-3_11_classes.ipynb](/train_mapillary_AWS_run_3_LR_e-3_11_classes.ipynb)
 Run 3 (16,384 train / 1,024 validation / 1,024 test); 11 classes; learning rate = e-3, mask threshold = 1024
 
-* [train_mapillary_AWS_run_3_LR_e-3_37_classes.ipynb](/train_mapillary_AWS_run_3_LR_e-3_37_classes.ipynb)
-Run 3 (16,384 train / 1,024 validation / 1,024 test); 37 classes; learning rate = e-3, mask threshold = 1024
+* [test_mapillary_11_classes.ipynb](/test_mapillary_11_classes.ipynb)
+Evaluate performance of 11 classes on test set
+
+* [test_mapillary_37_classes.ipynb](/test_mapillary_37_classes.ipynb)
+Evaluate performance of 37 classes on test set
 
 # Step by Step Detection
 To help with debugging and understanding the model, there are 3 notebooks 
