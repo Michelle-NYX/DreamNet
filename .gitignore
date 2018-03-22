@@ -1,6 +1,3 @@
-mask_rcnn_coco.h5
-logs
-mapillary_dataset
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
