@@ -1737,8 +1737,95 @@ def data_generator(dataset, config, shuffle=True, augment=True, random_rois=0,
             error_count += 1
             if error_count > 5:
                 raise
+class TestCallback(keras.callbacks.Callback):
+    def __init__(self, test_data):
+        self.test_data = test_data
 
+    def on_epoch_end(self, epoch, logs={}):
+        x, y = self.test_data
+        loss, acc = self.model.evaluate(x, y, verbose=0)
+        print('\nTesting loss: {}, acc: {}\n'.format(loss, acc))
 
+class NBatchLogger(keras.callbacks.Callback):
+    """
+    A Logger that log average performance per `display` steps.
+    """
+    def __init__(self, display):
+        self.step = 0
+        self.display = display
+        self.metric_cache = {}
+
+    def on_batch_end(self, batch, logs={}):
+        self.step += 1
+        for k in self.params['metrics']:
+            if k in logs:
+                self.metric_cache[k] = self.metric_cache.get(k, 0) + logs[k]
+        if self.step % self.display == 0:
+            metrics_log = ''
+            for (k, v) in self.metric_cache.items():
+                val = v / self.display
+                if abs(val) > 1e-3:
+                    metrics_log += ' - %s: %.4f' % (k, val)
+                else:
+                    metrics_log += ' - %s: %.4e' % (k, val)
+            output = open('out.txt', 'a')
+            output.write('\nstep: {}/{} ... {}'.format(self.step,
+                                          self.params['steps'],
+                                          metrics_log))
+            self.metric_cache.clear()
+        output.close()
+
+class LossHistory(keras.callbacks.Callback):
+    def on_train_begin(self, logs={}):
+        self.losses = []
+
+    def on_batch_end(self, batch, logs={}):
+        self.losses.append(logs.get('loss'))
+
+class LoggingCallback(keras.callbacks.Callback):
+    """Callback that logs message at end of epoch.
+    """
+
+    def __init__(self, print_fcn=print):
+        keras.callbacks.Callback.__init__(self)
+        self.print_fcn = print_fcn
+
+    def on_epoch_end(self, epoch, logs={}):
+        msg = "Epoch: %i, %s" % (epoch, ", ".join("%s: %f" % (k, v) for k, v in logs.iteritems()))
+        self.print_fcn(msg)
+
+class Histories(keras.callbacks.Callback):
+    def on_train_begin(self, logs={}):
+        self.losses = []
+        self.val_losses = []
+        self.val_rpn_class_loss = []
+        self.val_rpn_bbox_loss = []
+        self.val_mrcnn_class_loss = []
+        self.val_mrcnn_bbox_loss = []
+        self.val_mrcnn_mask_loss = []
+
+    def on_train_end(self, logs={}):
+        return
+
+    def on_epoch_begin(self, epoch, logs={}):
+        return
+
+    def on_epoch_end(self, epoch, logs={}):
+        self.losses.append(logs.get('loss'))
+		#y_pred = self.model.predict(self.validation_data[0])
+        self.val_losses.append(logs.get('val_loss'))
+        self.val_losses.append(logs.get('val_rpn_class_loss'))
+        self.val_losses.append(logs.get('val_rpn_bbox_loss'))
+        self.val_losses.append(logs.get('val_mrcnn_class_loss'))
+        self.val_losses.append(logs.get('val_mrcnn_bbox_loss'))
+        self.val_losses.append(logs.get('val_mrcnn_mask_loss'))
+        return
+
+    def on_batch_begin(self, batch, logs={}):
+        return
+
+    def on_batch_end(self, batch, logs={}):
+        return
 ############################################################
 #  MaskRCNN Class
 ############################################################
@@ -2208,8 +2295,14 @@ class MaskRCNN():
             keras.callbacks.TensorBoard(log_dir=self.log_dir,
                                         histogram_freq=0, write_graph=True, write_images=False),
             keras.callbacks.ModelCheckpoint(self.checkpoint_path,
-                                            verbose=0, save_weights_only=True),
+                                            verbose=1, save_weights_only=True),
+            keras.callbacks.History(),
+            keras.callbacks.CSVLogger('./loss_' + self.config.NAME + '.csv', separator=',', append=False),
+            NBatchLogger(1)
         ]
+        #csv_logger = keras.callbacks.CSVLogger('./loss.csv', separator=',', append=False)
+        #History = Histories()
+        #LogHistory = NBatchLogger(1)
 
         # Train
         log("\nStarting at epoch {}. LR={}\n".format(self.epoch, learning_rate))
@@ -2225,7 +2318,7 @@ class MaskRCNN():
         else:
             workers = max(self.config.BATCH_SIZE // 2, 2)
 
-        self.keras_model.fit_generator(
+        history_callback = self.keras_model.fit_generator(
             train_generator,
             initial_epoch=self.epoch,
             epochs=epochs,
@@ -2238,6 +2331,12 @@ class MaskRCNN():
             use_multiprocessing=True,
         )
         self.epoch = max(self.epoch, epochs)
+
+        #print(history_callback.history.keys())
+        #print ("Epoch: %i, %s" % (epoch, ", ".join("%s: %f" % (k, v) for k, v in History.losses.iteritems())))
+        #print ("Epoch: %i, %s" % (epoch, ", ".join("%s: %f" % (k, v) for k, v in History.val_losses.iteritems())))
+        #print(History.losses)
+        #print(History.val_losses)
 
     def mold_inputs(self, images):
         """Takes a list of images and modifies them to the format expected
