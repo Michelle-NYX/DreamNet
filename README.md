@@ -3,6 +3,8 @@ One of the major challenges in autonomous driving is the ability to understand t
 
 ![Result](Picture1.jpg): 
 
+# Dataset
+The Mapillary Vistas dataset [3] contains 20,000 high-resolution street-level images on multiple locations around the world. 37 object categories are labeled with pixel-wise instance-level annotations. We included the file names we used in every split. Download mapillary dataset at https://research.mapillary.com
 
 # Getting Started
 * [demo.ipynb](/demo.ipynb) Is the easiest way to start. It shows an example of using a model pre-trained on MS COCO to segment objects in your own images.
