@@ -1,0 +1,13 @@
+This set was used to debug AWS remote server setup. 
+
+Images are NOT used in the final training/dev/test.
+
+Log file was deleted.
+
+Learning Rate: 0.0001
+Weight Decay: 0.0005
+Image size: 1024 x 1024
+Batch size: 8
+Use pertained weight: coco
+Threshold: 64 x 64 = 4096
+Date: 11/03/2018
